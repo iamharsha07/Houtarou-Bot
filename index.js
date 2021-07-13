@@ -1,6 +1,17 @@
 ﻿const Discord = require("discord.js");
 const colors = require("colors");
 const fs = require("fs"); 
+const express = require('expresss');
+app.get('/', async (req, res) => {
+    res.send('express')
+})
+
+app.get('/user/:userId', async (req, res) => {
+    var user = client.fetchUser(req.params.userId).catch(res.send('<pre>500 internal server error</pre>'))
+    res.send(`User grabbed was ${user}`).catch(console.error)
+})
+
+app.listen(port, () => console.log(`App listening on port ${port}!`))
 
 const client = new Discord.Client({
   messageCacheLifetime: 60,
